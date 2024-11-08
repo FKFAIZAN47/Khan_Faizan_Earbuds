@@ -20,6 +20,22 @@
         }
       }
     
+  // Add data on the hotspots
+  
+  const infoBoxes = [
+    {
+      title: "Ergonomic Design",
+      text: "Designed for comfort and long-term wear.",
+    },
+    {
+      title: "Water Resistant",
+      text: "Built to withstand rain and sweat."
+    },
+    {
+      title: "High-Fidelity Sound",
+      text: "Experience superior sound quality with deep bass.",
+    }
+  ]
   
   function loadInfo() {
     infoBoxes.forEach((infoBox, index) => {
@@ -55,23 +71,5 @@
     });
   
   })();
-  
-  // Add data on the hotspots
-  
-  const infoBoxes = [
-    {
-      title: "Ergonomic Design",
-      text: "Designed for comfort and long-term wear.",
-    },
-    {
-      title: "Water Resistant",
-      text: "Built to withstand rain and sweat."
-    },
-    {
-      title: "High-Fidelity Sound",
-      text: "Experience superior sound quality with deep bass.",
-    }
-  ]
-  
   
   
