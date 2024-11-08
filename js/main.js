@@ -62,7 +62,7 @@
   function modelLoaded() {
     console.log("Model loaded successfully");
   }
-    //Event listeners
+
     model.addEventListener("load", modelLoaded);
   
     hotspots.forEach(function (hotspot) {
