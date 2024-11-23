@@ -7,6 +7,202 @@
         <link href="css/main.css" rel="stylesheet" />
         <!-- link to greensock main library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+    </head>
+    <body>
+
+        <header>
+            
+            <button id="hamburger">&#9776;</button>
+            <div id="menu" class="overlay">
+                <button id="close">&times;</button>
+                <nav id="ham-nav">
+                    <a href="#home">
+                        <img src="images/earbud-ogo.png" alt="Boat Earbuds Logo"></a>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#AR-model">AR-Model</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#color">Browse</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <nav class="desktop-menu">
+                <img src="images/earbud-ogo.png" alt="Boat Earbuds Logo"></a>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#AR-model">AR-Model</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#color">Browse</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <script>
+ 
+            const menu = document.querySelector("#menu");
+            const hamburger = document.querySelector("#hamburger");
+            const closeButton = document.querySelector("#close");
+            const menuLinks = document.querySelectorAll(".overlay nav ul a");
+    
+            function toggleMenu() {
+                menu.classList.toggle("open");
+            }
+    
+            hamburger.addEventListener("click", toggleMenu);
+            closeButton.addEventListener("click", toggleMenu);
+    
+            menuLinks.forEach(link => {
+                link.addEventListener("click", toggleMenu);
+            })
+
+        </script>
+
+        
+
+                <!-- Hero Section -->
+        <section id="hero">
+            <h1>Introducing the All new Boat Earbuds</h1>
+            <p>Discover the best sound quality with our range of Boat Earbuds. Perfect for music lovers and audiophiles.</p>
+            <div>
+                <a href="#AR-model" class="learn-more-button">View 3D Model</a>
+                <a href="#features" class="browse-more">Browse more</a>
+            </div>
+        </section>
+
+
+
+         <!-- Scroll Animation -->
+         <div class="col-span-full">
+            <canvas id="explode-view"></canvas> 
+        </div>
+
+
+        <script>
+               const canvas = document.querySelector("#explode-view");
+    const context = canvas.getContext("2d");
+
+    canvas.width = 1920;
+    canvas.height = 1080;
+    
+    const frameCount = 180; //how many still frames 
+    const images = []; //arrey to hold images
+
+    //Fill the arrey with images and point to the images 
+    
+    for(let i = 0; i < frameCount; i++){
+        const img = new Image();
+        //recreating the path: images/render/boat-earbud0001.webp
+        img.src = `images/render/boat-earbud${(i+1).toString().padStart(4, '0')}.webp`;
+        images.push(img);
+    }
+    
+
+        const buds = {
+            frame: 0 
+        }
+        gsap.to(buds,{
+            frame: 180, //like saying x:400, we specify a vaule for the animated property 
+            snap: "frame", 
+            scrollTrigger: {
+                trigger: "#explode-view",
+                pin: true,
+                scrub: 1,
+                markers:true,
+                start:"top top"
+            },
+            onUpdate: render
+    })
+    //when images is first loaded into the arrey, call the render function
+    images[0].addEventListener("load",render)
+
+    function render(){
+        //console.log(buds.frame);
+        console.log(images[buds.frame]);
+        //wipe the canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(images[buds.frame], 0, 0);
+
+
+    }
+        </script>
+
+
+        <!-- AR Model - 3D -->
+         <section id="AR-model">
+        <div class="container">
+            <model-viewer src="model/model.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" auto-rotate camera-orbit="19.47deg 90.52deg 13.33m" field-of-view="30deg" exposure="1.43" autoplay>
+                <button class="Hotspot" slot="hotspot-1" data-surface="24 0 312 1 311 0.071 0.915 0.014" data-visibility-attribute="visible">
+                        <div class="HotspotAnnotation"></div>
+                </button>
+                <button class="Hotspot" slot="hotspot-2" data-surface="43 0 33568 33569 34191 0.245 0.367 0.388" data-visibility-attribute="visible">
+                        <div class="HotspotAnnotation"></div>
+                </button>
+                <button class="Hotspot" slot="hotspot-3" data-surface="25 0 783 830 782 0.506 0.200 0.294" data-visibility-attribute="visible">
+                        <div class="HotspotAnnotation"></div>
+                </button>
+                <div class="progress-bar hide" slot="progress-bar">
+                        <div class="update-bar"></div>
+                </div>
+                <button slot="ar-button" id="ar-button">
+                        View in your space
+                </button>
+                <div id="ar-prompt"></div>
+            </model-viewer>
+
+        </div>
+    </section>
+
+
+
+        <!-- Banner Section -->
+        <section id="banner">
+            <img src="images/post-1.png" alt="Earbuds Banner" style="width: 100%; height: auto;">
+        </section>
+
+        <!-- feature Section -->
+         <div id = "features">
+        <section id="banner2">
+            
+            <img src="images/post-2.png" alt="New Banner" style="width: 50%; height: auto; margin-right: 20px;">
+            <div class="col-banner">
+                <h2>New Arrivals</h2>
+                <p style="font-size: 1.2em; max-width: 50%;">Experience the ultimate sound quality with our latest Boat Earbuds. Designed for comfort and engineered for superior audio performance.</p>
+                <a href="#shop" class="shop-now-button">Shop Now</a>
+            </div>
+            
+        </section>
+    </div>
+
+
+        <!-- Color picker -->
+         <section id="color">
+        <div class="grid-con">
+            <section class="col-span-full m-col-start-3 m-col-end-11 l-col-start-4 l-col-end-10" id="buds-con">
+                <h2>Select Your Colour</h2>
+                <section id="color-con">
+                    <button id="yellow"></button>
+                    <button id="green"></button>
+                    <button id="blue"></button>
+                    <button id="red"></button>
+                </section>
+                <img src="images/yellow.jpg" id="ear-buds" style="width: 50%; height: auto;">
+            </section>
+        </div>
+        </section>
+
+        <!-- Xray Slider -->
+        <div class="col-span-full">
+            <div id="comparison-con">
+                <div id="xray">
+                    <div id="divisor"></div>
+                </div>
+                <input type="range" min="0" max="100" value="50" id="slider">
+            </div>
+        </div>
+
+
     </head>
     <body>
         <div class="container">
@@ -30,9 +226,142 @@
             </model-viewer>
         </div>
 
+
         <!-- Load <model-viewer> for browsers: -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
         <script src="js/main.js"></script>
+
+    
+        <footer>
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <a href="#home"><img src="images/earbud-ogo.png" alt="Boat Earbuds Logo"></a>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#AR-model">AR-Model</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#color">Browse</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+
+                    <!-- Add Font Awesome library -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Boat Earbuds. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+        gsap.from("#hero h1", {
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top 80%",
+                end: "bottom 60%",
+                scrub: true,
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1
+        });
+
+        gsap.from("#hero p", {
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top 70%",
+                end: "bottom 50%",
+                scrub: true,
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1
+        });
+
+        gsap.from(".learn-more-button", {
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top 60%",
+                end: "bottom 40%",
+                scrub: true,
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1
+        });
+
+        gsap.from(".browse-more", {
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top 60%",
+                end: "bottom 40%",
+                scrub: true,
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1
+        });
+
+
+    
+        
+        gsap.from("#features img", {
+            scrollTrigger: {
+            trigger: "#features",
+            start: "top 80%",
+            end: "bottom 60%",
+            scrub: true,
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1
+        });
+
+        gsap.from("#features h2", {
+            scrollTrigger: {
+            trigger: "#features",
+            start: "top 70%",
+            end: "bottom 50%",
+            scrub: true,
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1
+        });
+
+        gsap.from("#features p", {
+            scrollTrigger: {
+            trigger: "#features",
+            start: "top 70%",
+            end: "bottom 50%",
+            scrub: true,
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1
+        });
+
+        gsap.from("#features .shop-now-button", {
+            scrollTrigger: {
+            trigger: "#features",
+            start: "top 60%",
+            end: "bottom 40%",
+            scrub: true,
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1
+        });
+        </script>
+
+
     </body>
 </html>
