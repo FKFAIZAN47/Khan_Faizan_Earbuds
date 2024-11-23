@@ -1,17 +1,10 @@
+@charset "UTF-8";
 
-model-viewer {
-    width: 100%;
-    max-width: 800px;
-    height: 600px;
-    background-color: wheat;
-    margin: 0 auto;
-  }
-  
-  .HotspotAnnotation {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 14px;
-    color: #333;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  }
+//have to include all of these otherwise main.css will be empty
+//We do not create styles in here
+
+
+@import "//abstracts/variable";
+@import "//base";
+@import "//components";
+@import "//pages";
