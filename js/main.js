@@ -89,7 +89,7 @@
           console.log("slider.value");
           divisor.style.width = slider.value+"%";
         // divisor.style.width = `${slider.value+"%"}`;
-    
+
       
         }
       
