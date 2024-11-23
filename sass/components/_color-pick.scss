@@ -1,0 +1,57 @@
+   /* Color Picker */
+
+button {
+border: 0;
+width: 20px;
+height: 20px;
+border-radius: 20px;
+cursor: pointer;
+}
+
+#yellow {background-color: rgb(235, 216, 11)}
+#green {background-color: green}
+#blue {background-color: blue}
+#red {background-color: rgb(149, 1, 1)} 
+
+
+ #buds-con {
+text-align: center;
+}
+
+#color-con {
+display: flex;
+justify-content: center;
+gap: 10px;
+margin-top: 20px;
+}
+
+#color-con button {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+border: none;
+cursor: pointer;
+}
+
+#yellow {
+background-color: yellow;
+}
+
+#green {
+background-color: green;
+}
+
+#blue {
+background-color: blue;
+}
+
+#red {
+background-color: red;
+}
+
+#ear-buds {
+display: block;
+margin: 20px auto;
+max-width: 100%;
+height: auto;
+}
