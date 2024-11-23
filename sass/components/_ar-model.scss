@@ -1,17 +1,44 @@
+.Hotspot {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    
+}
+
+.HotspotAnnotation {
+    display: none;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: white;
+    color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 400px;
+}
+
+.Hotspot:hover .HotspotAnnotation {
+    display: block;
+}
+
+.HotspotAnnotation img {
+    max-width: 100px;
+    height: auto;
+}
+
 model-viewer {
     width: 100%;
-    max-width: 800px;
     height: 600px;
-    background-color: wheat;
-    margin: 0 auto;
-  }
-  
-  .HotspotAnnotation {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 14px;
-    color: #333;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  }
-  
+}
+
+
+@media (max-width: 768px) {
+    .Hotspot {
+        display: none;
+    }
+}

@@ -1,0 +1,126 @@
+.desktop-menu img {
+    width: 100px;
+    height: auto;
+}
+
+@media (min-width: 768px) {
+
+    #ham-nav {
+        width: 50%;
+    }
+
+    #hamburger {
+        display: none;
+    }
+    .overlay {
+        display: none;
+    }
+    .desktop-menu {
+        padding: 0px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .desktop-menu ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+    }
+    .desktop-menu ul li {
+        margin: 0 15px;
+    }
+    .desktop-menu ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        transition: color 0.3s;
+    }
+    .desktop-menu ul li a:hover {
+        color: #f1c40f;
+    }
+}
+
+@media (max-width: 767px) {
+    .desktop-menu {
+        display: none;
+    }
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+#hamburger {
+    font-size: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    margin-left: 20px;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay.open {
+    width: 100%;
+}
+
+.overlay nav {
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+}
+
+.overlay nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.overlay nav ul li {
+    padding: 10px 0;
+}
+
+.overlay nav ul li a {
+    color: white;
+    font-size: 36px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.overlay nav ul li a:hover {
+    color: #f1c40f;
+}
+
+#close {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+}
+
+@media (max-width: 767px) {
+    .overlay nav ul li a {
+        font-size: 24px;
+    }
+}
